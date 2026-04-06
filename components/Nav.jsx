@@ -13,6 +13,9 @@ export default function Nav() {
         </div>
         <div className="flex items-center justify-center sm:w-[80%] relative sm:h-full sm:opacity-100 h-0 w-0 opacity-0">
           <NavItems linkTo="/chemistry" text="Chemistry" />
+          <NavItems linkTo="/physics" text="Physics" />
+          <NavItems linkTo="/biology" text="Biology" />
+          <NavItems linkTo="/mathematics" text="Mathematics" />
         </div>
       </div>
     </div>
