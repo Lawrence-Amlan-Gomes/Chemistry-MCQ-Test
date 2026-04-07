@@ -2,6 +2,8 @@ import jwt from "jsonwebtoken";
 import { connectDB } from "../../../../lib/db";
 import User from "../../../../models/User";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req) {
   try {
     await connectDB();

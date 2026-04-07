@@ -1,6 +1,8 @@
+import jwt from "jsonwebtoken";
 import { connectDB } from "../../../../lib/db";
 import User from "../../../../models/User";
-import jwt from "jsonwebtoken";
+
+export const dynamic = "force-dynamic";
 
 export async function GET(req) {
   try {
@@ -14,8 +16,11 @@ export async function GET(req) {
     const token = authHeader.split(" ")[1];
 
     // Verify token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || "fallback-secret");
-    
+    const decoded = jwt.verify(
+      token,
+      process.env.JWT_SECRET || "fallback-secret",
+    );
+
     // Find user
     const user = await User.findById(decoded.userId).select("-password");
     if (!user) {

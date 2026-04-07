@@ -35,6 +35,19 @@ export default function McqGenerate({ subject }) {
     }
   }, [user, router]);
 
+  const handleSubmit = useCallback(() => {
+    if (!isSubmitted) {
+      const submitted = confirm(
+        "Do you want to submit your answers? You can't submit again.",
+      );
+      if (submitted) {
+        setIsSubmitted(true);
+        setIsTimerActive(false);
+        setShowResults(true);
+      }
+    }
+  }, [isSubmitted]);
+
   // Timer effect
   useEffect(() => {
     let interval = null;
@@ -72,19 +85,6 @@ export default function McqGenerate({ subject }) {
       console.log("Selected MCQs:", selectedMcqs);
     }, 800);
   };
-
-  const handleSubmit = useCallback(() => {
-    if (!isSubmitted) {
-      const submitted = confirm(
-        "Do you want to submit your answers? You can't submit again.",
-      );
-      if (submitted) {
-        setIsSubmitted(true);
-        setIsTimerActive(false);
-        setShowResults(true);
-      }
-    }
-  }, [isSubmitted]);
 
   // Save score when it's calculated after submission
   useEffect(() => {
