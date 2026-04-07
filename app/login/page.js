@@ -1,9 +1,9 @@
 "use client";
+import { Eye, EyeOff, Lock, User } from "lucide-react";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useAuth } from "../contexts/AuthProvider";
-import { useRouter } from "next/navigation";
-import Link from "next/link";
-import { Eye, EyeOff, User, Lock } from "lucide-react";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -37,7 +37,9 @@ export default function Login() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center px-4">
       <div className="max-w-md w-full bg-white rounded-xl shadow-lg p-8">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">Welcome Back</h1>
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            Welcome Back
+          </h1>
           <p className="text-gray-600">Sign in to access Chemistry MCQ Tests</p>
         </div>
 
@@ -84,7 +86,11 @@ export default function Login() {
                 onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600"
               >
-                {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                {showPassword ? (
+                  <EyeOff className="w-5 h-5" />
+                ) : (
+                  <Eye className="w-5 h-5" />
+                )}
               </button>
             </div>
           </div>
@@ -100,8 +106,11 @@ export default function Login() {
 
         <div className="mt-6 text-center">
           <p className="text-gray-600">
-            Don't have an account?{" "}
-            <Link href="/register" className="text-blue-600 hover:text-blue-700 font-medium">
+            Don&apos;t have an account?{" "}
+            <Link
+              href="/register"
+              className="text-blue-600 hover:text-blue-700 font-medium"
+            >
               Sign up
             </Link>
           </p>

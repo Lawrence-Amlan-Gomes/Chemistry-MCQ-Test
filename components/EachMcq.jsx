@@ -20,7 +20,7 @@ export default function EachMcq({ mcq, isSubmitted, setScore }) {
         setScore((prev) => prev + 1);
       }
     }
-  }, [isSubmitted, activeCircle, mcq.correctAns]);
+  }, [isSubmitted, activeCircle, mcq.correctAns, setScore]);
 
   const options1 = [
     mcq.wrongAnswer1,

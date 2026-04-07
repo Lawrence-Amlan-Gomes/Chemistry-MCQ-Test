@@ -11,7 +11,7 @@ import {
   X,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useAuth } from "../app/contexts/AuthProvider";
 import hardcodedMcqs from "../app/mcqdatabase/chemistry";
 import EachMcq from "./EachMcq";
@@ -47,7 +47,7 @@ export default function McqGenerate({ subject }) {
       handleSubmit();
     }
     return () => clearInterval(interval);
-  }, [isTimerActive, timeLeft]);
+  }, [isTimerActive, timeLeft, handleSubmit]);
 
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
@@ -73,7 +73,7 @@ export default function McqGenerate({ subject }) {
     }, 800);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = useCallback(() => {
     if (!isSubmitted) {
       const submitted = confirm(
         "Do you want to submit your answers? You can't submit again.",
@@ -84,7 +84,7 @@ export default function McqGenerate({ subject }) {
         setShowResults(true);
       }
     }
-  };
+  }, [isSubmitted]);
 
   // Save score when it's calculated after submission
   useEffect(() => {
@@ -202,7 +202,8 @@ export default function McqGenerate({ subject }) {
                 </h2>
                 <p className="text-lg text-gray-600 mb-8 max-w-md">
                   Get 10 random multiple-choice questions covering all aspects
-                  of chemistry. You'll have 10 minutes to complete the test!
+                  of chemistry. You&apos;ll have 10 minutes to complete the
+                  test!
                 </p>
               </div>
 

@@ -1,3 +1,4 @@
+"use client";
 import McqGenerate from "../../components/McqGenerate";
 
 export default function Chemistry() {
